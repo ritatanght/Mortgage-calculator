@@ -1,47 +1,28 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+import Input from "./components/Input.vue";
+
+export default {
+  data() {
+    return {
+      fields: [
+        { type: "range", label: "Purchase price", value: 0, unit: "$" },
+        { type: "range", label: "Down payment", value: 0, unit: "$" },
+        { type: "range", label: "Repayment time", value: 0, unit: " years" },
+        { type: "range", label: "Interest Rate", value: 0, unit: "%" },
+      ],
+    };
+  },
+  components: {
+    Input,
+  },
+};
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
+  <h1>Mortgage calculator</h1>
   <main>
-    <TheWelcome />
+    <Input v-for="field in fields" :input="field" />
   </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+<style scoped></style>
