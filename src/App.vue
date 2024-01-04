@@ -56,7 +56,7 @@ export default {
 </script>
 
 <template>
-  <h1>Mortgage calculator</h1>
+  <h1>Mortgage Calculator</h1>
   <main>
     <Input v-for="field in fields" :input="field" />
     <Display :label="loan.label" :value="loan.value" />
@@ -67,18 +67,24 @@ export default {
 <style scoped>
 h1 {
   text-align: center;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid;
 }
 
 main {
-  padding: 1em;
+  padding: 2em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5em;
+  column-gap: 2.5em;
+  row-gap: 4em;
 }
 
 @media (max-width: 700px) {
   main {
+    padding: 1em;
     grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    row-gap: 2.5em;
   }
 }
 </style>

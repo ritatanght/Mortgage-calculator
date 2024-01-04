@@ -24,14 +24,26 @@ export default {
 <style scoped>
 div {
   font-size: 1.2rem;
+  max-height: 120px;
 }
+
 p.label {
-  margin: 0;
   margin-bottom: 1em;
 }
 
 p:not(.label) {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  p.label {
+    margin-bottom: 0.8em;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 </style>
