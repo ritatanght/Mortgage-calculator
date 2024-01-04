@@ -21,9 +21,11 @@ export default {
 
 <template>
   <div>
-    <label :for="input.label.split(' ').join('-')">{{ input.label }}:</label>
+    <label :for="input.label.split(' ').join('-')">{{ input.label }}: </label>
     <strong>{{
-      input.unit === "$" ? input.unit + input.value : input.value + input.unit
+      this.input.unit === "$"
+        ? this.input.unit + this.input.value.toLocaleString("en-CA")
+        : this.input.value + this.input.unit
     }}</strong>
     <input
       type="range"
@@ -35,4 +37,22 @@ export default {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+strong {
+  font-size: 1.2rem;
+}
+
+input {
+  display: block;
+  margin-top: 1.5em;
+  width: 100%;
+  accent-color: #75c9b7;
+}
+
+@media (max-width: 700px) {
+  strong {
+    display: block;
+    margin-top: 0.5em;
+  }
+}
+</style>
