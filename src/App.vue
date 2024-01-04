@@ -6,10 +6,34 @@ export default {
   data() {
     return {
       fields: {
-        price: { label: "Purchase price", value: 450000, unit: "$" },
-        downPymt: { label: "Down payment", value: 135000, unit: "$" },
-        period: { label: "Repayment time", value: 25, unit: " years" },
-        rate: { label: "Interest Rate", value: 3, unit: "%" },
+        price: {
+          label: "Purchase price",
+          value: 450000,
+          unit: "$",
+          step: 1000,
+          max: 1000000,
+        },
+        downPymt: {
+          label: "Down payment",
+          value: 135000,
+          unit: "$",
+          step: 1000,
+          max: 1000000,
+        },
+        period: {
+          label: "Repayment time",
+          value: 25,
+          unit: " years",
+          step: 1,
+          max: 30,
+        },
+        rate: {
+          label: "Interest Rate",
+          value: 3,
+          unit: "%",
+          step: 1,
+          max: 10,
+        },
       },
       loan: { label: "Loan amount", value: 0 },
       mthPayment: { label: "Est. monthly payment", value: 0 },

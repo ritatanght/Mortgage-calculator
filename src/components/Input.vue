@@ -2,19 +2,7 @@
 export default {
   props: {
     input: Object,
-    //{ label: String, value: Number, unit: String },
-  },
-  methods: {
-    maxValue() {
-      switch (this.input.unit) {
-        case "$":
-          return 1000000;
-        case "%":
-          return 10;
-        case " years":
-          return 30;
-      }
-    },
+    //{ label: String, value: Number, unit: String,  step: Number, max: Number },
   },
 };
 </script>
@@ -31,8 +19,9 @@ export default {
       type="range"
       :id="input.label.split(' ').join('-')"
       v-model="input.value"
-      min="1"
-      :max="maxValue()"
+      :min="input.step"
+      :max="input.max"
+      :step="input.step"
     />
   </div>
 </template>
