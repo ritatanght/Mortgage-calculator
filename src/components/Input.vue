@@ -1,7 +1,8 @@
 <script>
 export default {
   props: {
-    input: { type: String, label: String, value: Number, unit: String },
+    input: Object,
+    //{ label: String, value: Number, unit: String },
   },
   methods: {
     maxValue() {
@@ -20,13 +21,17 @@ export default {
 
 <template>
   <div>
-    <span
-      >{{ input.label }}:
-      <strong>{{
-        input.unit === "$" ? input.unit + input.value : input.value + input.unit
-      }}</strong></span
-    >
-    <input :type="input.type" v-model="input.value" :max="maxValue()"/>
+    <label :for="input.label.split(' ').join('-')">{{ input.label }}:</label>
+    <strong>{{
+      input.unit === "$" ? input.unit + input.value : input.value + input.unit
+    }}</strong>
+    <input
+      type="range"
+      :id="input.label.split(' ').join('-')"
+      v-model="input.value"
+      min="1"
+      :max="maxValue()"
+    />
   </div>
 </template>
 
