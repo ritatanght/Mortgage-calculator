@@ -4,17 +4,20 @@ export default {
     input: Object,
     //{ label: String, value: Number, unit: String,  step: Number, max: Number },
   },
+  computed: {
+    formattedValue() {
+      return this.input.unit === "$"
+        ? this.input.unit + this.input.value.toLocaleString("en-CA")
+        : this.input.value + this.input.unit;
+    },
+  },
 };
 </script>
 
 <template>
   <div>
     <label :for="input.label.split(' ').join('-')">{{ input.label }}: </label>
-    <strong>{{
-      this.input.unit === "$"
-        ? this.input.unit + this.input.value.toLocaleString("en-CA")
-        : this.input.value + this.input.unit
-    }}</strong>
+    <strong>{{ formattedValue }}</strong>
     <input
       type="range"
       :id="input.label.split(' ').join('-')"
