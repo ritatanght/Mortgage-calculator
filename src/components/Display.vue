@@ -2,7 +2,7 @@
 export default {
   props: {
     label: String,
-    value: Number,
+    value: Number | String,
     //{ label: String, value: Number },
   },
 };
@@ -10,9 +10,28 @@ export default {
 
 <template>
   <div>
-    <p>{{ label }}</p>
-    <p>${{ value % 1 === 0 ? value : value.toFixed(2) }}</p>
+    <p class="label">{{ label }}</p>
+    <p>
+      ${{
+        value % 1 === 0
+          ? value.toLocaleString("en-CA")
+          : value.toLocaleString("en-CA", { maximumFractionDigits: 2 })
+      }}
+    </p>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+div {
+  font-size: 1.2rem;
+}
+p.label {
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+p:not(.label) {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+</style>
