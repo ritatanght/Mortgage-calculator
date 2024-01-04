@@ -18,7 +18,7 @@ export default {
           value: 135000,
           unit: "$",
           step: 1000,
-          max: 1000000,
+          max: 450000,
         },
         period: {
           label: "Repayment time",
@@ -58,18 +58,19 @@ export default {
     this.calculatePymt();
   },
   watch: {
-    fields: {
-      handler() {
-        if (this.fields.downPymt.value > this.fields.price.value) {
-          alert("Down payment cannot be larger than the purchase price");
-          this.loan.value = " -- ";
-          this.mthPayment.value = " -- ";
-        } else {
-          this.calculateLoanAmt();
-          this.calculatePymt();
-        }
-      },
-      deep: true,
+    "fields.downPymt.value"() {
+      this.calculateLoanAmt();
+      this.calculatePymt();
+    },
+    "fields.price.value"(newVal) {
+      // Update max value of down payment to be the purchase price
+      this.fields.downPymt.max = newVal;
+      if (Number(this.fields.downPymt.value) > newVal) {
+        // Adjust down payment if it exceeds the new price
+        this.fields.downPymt.value = newVal;
+      }
+      this.calculateLoanAmt();
+      this.calculatePymt();
     },
   },
   components: {
