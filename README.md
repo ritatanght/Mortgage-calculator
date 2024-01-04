@@ -1,29 +1,24 @@
 # mortgage-calculator
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a mortgage calculator built with Vue.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Users can set purchase prices
+- Users can set down payment
+- Users can set repayment time
+- Users can set interest rate
+- Show users loan amount
+- Show users the estimated amount they'll pay on a monthly basis
 
-## Customize configuration
+## Dependencies
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Vue 3
+- Vite
 
-## Project Setup
+## Getting Started
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
 ```
