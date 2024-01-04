@@ -62,6 +62,13 @@ export default {
       this.calculateLoanAmt();
       this.calculatePymt();
     },
+    "fields.period.value"() {
+      this.calculatePymt();
+    },
+    "fields.rate.value"() {
+      this.calculatePymt();
+    },
+
     "fields.price.value"(newVal) {
       // Update max value of down payment to be the purchase price
       this.fields.downPymt.max = newVal;
