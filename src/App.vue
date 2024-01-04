@@ -12,7 +12,7 @@ export default {
         rate: { label: "Interest Rate", value: 3, unit: "%" },
       },
       loan: { label: "Loan amount", value: 0 },
-      mthPayment: { label: "Estimated pr. month", value: 0 },
+      mthPayment: { label: "Est. monthly payment", value: 0 },
     };
   },
   methods: {
@@ -36,8 +36,14 @@ export default {
   watch: {
     fields: {
       handler() {
-        this.calculateLoanAmt();
-        this.calculatePymt();
+        if (this.fields.downPymt.value > this.fields.price.value) {
+          alert("Down payment cannot be larger than the purchase price");
+          this.loan.value = " -- ";
+          this.mthPayment.value = " -- ";
+        } else {
+          this.calculateLoanAmt();
+          this.calculatePymt();
+        }
       },
       deep: true,
     },
@@ -58,4 +64,21 @@ export default {
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  text-align: center;
+}
+
+main {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5em;
+}
+
+@media (max-width: 700px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
