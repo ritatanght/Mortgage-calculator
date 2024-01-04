@@ -91,7 +91,7 @@ export default {
 <style scoped>
 h1 {
   text-align: center;
-  padding-bottom: 0.5em;
+  padding: 0.5em 0;
   border-bottom: 2px solid;
 }
 
